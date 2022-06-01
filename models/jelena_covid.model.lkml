@@ -10,4 +10,12 @@ datagroup: jelena_covid_default_datagroup {
 
 persist_with: jelena_covid_default_datagroup
 
-explore: covid_it {}
+explore: covid_it {
+
+      join: covid_it_region {
+        sql_on: ${covid_it.region_code} = ${covid_it_region.region_code};;
+        relationship: one_to_one
+        type: left_outer # Could be excluded since left_outer is the default
+      }
+
+}
