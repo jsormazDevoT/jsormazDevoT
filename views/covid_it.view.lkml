@@ -77,8 +77,14 @@ view: covid_it {
     sql_latitude:${latitude}  ;;
     sql_longitude:${latitude}  ;;
 }
+
   measure: count {
     type: count
     drill_fields: [name, province_name]
+  }
+
+  measure: total_cases {
+    type: sum
+    sql: sum${confirmed_cases};;
   }
 }
