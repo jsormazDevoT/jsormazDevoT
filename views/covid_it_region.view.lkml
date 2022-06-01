@@ -110,7 +110,7 @@ view: covid_it_region {
   dimension: long_lat {
     type: location
     sql_latitude:${latitude}  ;;
-    sql_longitude:${latitude}  ;;
+    sql_longitude:${longitude}  ;;
   }
 
   measure: total_cases {
