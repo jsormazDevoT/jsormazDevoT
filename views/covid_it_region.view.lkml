@@ -1,5 +1,5 @@
 view: covid_it_region {
-  sql_table_name: `my-sandbox-349912.NewDataset.covid_it_region`
+  sql_table_name: `NewDataset.covid_it_region`
     ;;
 
   dimension: country {
@@ -105,6 +105,17 @@ view: covid_it_region {
   dimension: total_hospitalized_patients {
     type: number
     sql: ${TABLE}.total_hospitalized_patients ;;
+  }
+
+  dimension: long_lat {
+    type: location
+    sql_latitude:${latitude}  ;;
+    sql_longitude:${latitude}  ;;
+  }
+
+  measure: total_cases {
+    type: sum
+    sql: ${total_confirmed_cases};;
   }
 
   measure: count {
