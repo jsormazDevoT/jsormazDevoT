@@ -72,6 +72,11 @@ view: covid_it {
     sql: ${TABLE}.region_code ;;
   }
 
+  dimension: long_lat {
+    type: location
+    sql_latitude:${TABLE}.latitude ;;
+    sql_longitude:${TABLE}.longitude ;;
+}
   measure: count {
     type: count
     drill_fields: [name, province_name]
