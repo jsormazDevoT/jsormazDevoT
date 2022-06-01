@@ -74,8 +74,8 @@ view: covid_it {
 
   dimension: long_lat {
     type: location
-    sql_latitude:${TABLE}.latitude ;;
-    sql_longitude:${TABLE}.longitude ;;
+    sql_latitude:${latitude}  ;;
+    sql_longitude:${latitude}  ;;
 }
   measure: count {
     type: count
