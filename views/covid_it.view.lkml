@@ -85,6 +85,6 @@ view: covid_it {
 
   measure: total_cases {
     type: sum
-    sql: sum${confirmed_cases};;
+    sql: ${confirmed_cases};;
   }
 }
