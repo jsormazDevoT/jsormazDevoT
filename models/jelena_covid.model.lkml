@@ -11,10 +11,10 @@ datagroup: jelena_covid_default_datagroup {
 persist_with: jelena_covid_default_datagroup
 
 explore: covid_it {
-  conditionally_filter: {
-    filters: [date_date: "3 months"]
-    unless: [region_code, province_code]
-  }
+ # conditionally_filter: {
+   # filters: [date_date: "3 months"]
+  #  unless: [region_code, province_code]
+ # }
 
       join: covid_it_region {
         sql_on: ${covid_it.region_code} = ${covid_it_region.region_code};;
