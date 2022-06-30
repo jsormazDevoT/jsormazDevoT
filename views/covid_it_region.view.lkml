@@ -22,6 +22,42 @@ view: covid_it_region {
     sql: ${TABLE}.date ;;
   }
 
+parameter: select_timeframe {
+  type: unquoted
+  default_value: "date_month"
+  allowed_value: {
+    value: "date_date"
+    label: "Date"
+  }
+  allowed_value: {
+    value: "date_week"
+    label: "Week"
+  }
+  allowed_value: {
+    value: "date_month"
+    label: "Month"
+  }
+  allowed_value: {
+    value: "date_year"
+    label: "Year"
+  }
+}
+
+  dimension: dynamic_timeframe {
+    label_from_parameter: select_timeframe
+    type: string
+    sql:
+    {% if select_timeframe._parameter_value == 'date_date' %}
+    ${date_date}
+    {% elsif select_timeframe._parameter_value == 'date_week' %}
+    ${date_week}
+    {% elsif select_timeframe._parameter_value == 'date_year' %}
+    ${date_year}
+    {% else %}
+    ${date_month}
+    {% endif %} ;;
+  }
+
   dimension: deaths {
     type: number
     sql: ${TABLE}.deaths ;;
