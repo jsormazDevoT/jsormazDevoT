@@ -28,4 +28,9 @@ explore: covid_it {
       type: left_outer
      }
 
+  join: region_ranking {
+    sql_on: ${covid_it_region.region_name}.region_code}=${region_ranking.region_name} ;;
+    relationship: one_to_one
+    type: left_outer
+  }
 }

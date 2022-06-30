@@ -2,6 +2,7 @@ view: covid_it_region {
   sql_table_name: `NewDataset.covid_it_region`
     ;;
 
+
   dimension: country {
     type: string
     map_layer_name: countries
