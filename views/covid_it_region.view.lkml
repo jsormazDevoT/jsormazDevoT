@@ -158,4 +158,9 @@ parameter: select_timeframe {
     type: count
     drill_fields: [region_name]
   }
+
+measure: total_deaths {
+  type: sum
+  sql: ${deaths} ;;
+}
 }
