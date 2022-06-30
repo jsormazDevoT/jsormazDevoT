@@ -5,7 +5,7 @@ view: region_ranking {
   derived_table: {
     sql: SELECT region_name,
                 SUM (deaths) as count,
-                RANK() over (ORDER BY count DESC) as Rank
+                RANK() over (ORDER BY SUM(deaths) DESC) as Rank
          FROM NewDataset.covid_it_region
          GROUP BY 1
         ;;
