@@ -22,6 +22,10 @@ explore: covid_it {
         type: left_outer # Could be excluded since left_outer is the default
       }
 
-
+     join: covid_gov_response {
+       sql_on: ${covid_it.region_code}=${covid_gov_response.alpha_3_code} ;;
+      relationship: one_to_one
+      type: left_outer
+     }
 
 }
