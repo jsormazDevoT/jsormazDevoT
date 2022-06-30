@@ -68,6 +68,8 @@ view: covid_it {
   }
 
   dimension: region_code {
+    label: "Region"
+    description: "Providing Region Code"
     type: string
     sql: ${TABLE}.region_code ;;
   }
