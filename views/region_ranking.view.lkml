@@ -33,7 +33,7 @@ parameter: MaxRegion_No{
 dimension: Rank {
   type: string
   sql: CASE WHEN ${rawrank}<={% parameter MaxRegion_No %}
-    then RIGHT ('00' + CAST(${rawrank} AS STRING),2)
+    then RIGHT ('00' || CAST(${rawrank} AS STRING),2)
     ELSE 'Other'
     end;;
 }
