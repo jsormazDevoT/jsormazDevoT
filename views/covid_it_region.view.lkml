@@ -9,6 +9,27 @@ view: covid_it_region {
     sql: ${TABLE}.country ;;
   }
 
+  parameter: select_measure {
+    type: unquoted
+    allowed_value: {
+      label: "Total Confirmed Cases"
+      value: "total_confirmed_cases"
+    }
+    allowed_value: {
+      label: "Total Hospitalized"
+      value: "total_hospitalized_patients"
+    }
+    allowed_value: {
+      label: "Total Deaths"
+      value: "deaths"
+    }
+  }
+
+  measure: dynamic_sum {
+    type: sum
+    sql: ${TABLE}.{% parameter select_measure %} ;;
+  }
+
   dimension_group: date {
     type: time
     timeframes: [
