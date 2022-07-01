@@ -136,8 +136,14 @@ parameter: select_timeframe {
   }
 
   dimension: region_code {
+    hidden: yes
     type: string
     sql: ${TABLE}.region_code ;;
+  }
+
+  filter: filter_on_field_to_hide {
+    type: string
+    sql: {% condition filter_on_field_to_hide %} ${region_code} {% endcondition %} ;;
   }
 
   dimension: region_name {
