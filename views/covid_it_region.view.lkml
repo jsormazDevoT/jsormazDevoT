@@ -106,16 +106,9 @@ parameter: select_timeframe {
   }
 
   dimension: location_geom {
-    hidden: yes
     type: string
     sql: ${TABLE}.location_geom ;;
   }
-
-  filter: filter_on_location {
-    type: string
-    sql: {% condition filter_on_location %} ${location_geom} {% endcondition %} ;;
-  }
-
 
   dimension: longitude {
     type: number
