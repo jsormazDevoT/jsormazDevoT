@@ -106,9 +106,16 @@ parameter: select_timeframe {
   }
 
   dimension: location_geom {
+    hidden: yes
     type: string
     sql: ${TABLE}.location_geom ;;
   }
+
+  filter: filter_on_location {
+    type: string
+    sql: {% condition filter_on_location %} ${location_geom} {% endcondition %} ;;
+  }
+
 
   dimension: longitude {
     type: number
@@ -136,14 +143,8 @@ parameter: select_timeframe {
   }
 
   dimension: region_code {
-    hidden: yes
     type: string
     sql: ${TABLE}.region_code ;;
-  }
-
-  filter: filter_on_region_code {
-    type: string
-    sql: {% condition filter_on_region_code %} ${region_code} {% endcondition %} ;;
   }
 
   dimension: region_name {
