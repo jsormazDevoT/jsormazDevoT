@@ -44,6 +44,32 @@ view: covid_it_region {
     sql: ${TABLE}.date ;;
   }
 
+
+  dimension_group: created {
+    type: time
+    view_label: "_PoP"
+    timeframes: [
+      raw,
+      time,
+      hour_of_day,
+      date,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year,
+      week,
+      week_of_year,
+      month,
+      month_name,
+      month_num,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.date ;;
+    convert_tz: no
+  }
+
+
 parameter: select_timeframe {
   type: unquoted
   default_value: "date_month"

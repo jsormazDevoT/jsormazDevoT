@@ -81,10 +81,10 @@ view: pop_parameters {
     sql:
         {% if current_date_range._is_filtered %}
             CASE
-            WHEN {% condition current_date_range %} ${date_raw} {% endcondition %}
-            THEN DATEDIFF(DAY, DATE({% date_start current_date_range %}), ${date_date}) + 1
+            WHEN {% condition current_date_range %} ${created_raw} {% endcondition %}
+            THEN DATEDIFF(DAY, DATE({% date_start current_date_range %}), ${created_date}) + 1
             WHEN ${date_date} between ${period_2_start} and ${period_2_end}
-            THEN DATEDIFF(DAY, ${period_2_start}, ${date_date}) + 1
+            THEN DATEDIFF(DAY, ${period_2_start}, ${created_date}) + 1
             END
         {% else %} NULL
         {% endif %}
@@ -97,9 +97,9 @@ view: pop_parameters {
     sql:
             {% if current_date_range._is_filtered %}
                 CASE
-                WHEN {% condition current_date_range %} ${date_raw} {% endcondition %}
+                WHEN {% condition current_date_range %} ${created_raw} {% endcondition %}
                 THEN 1
-                WHEN ${date_date} between ${period_2_start} and ${period_2_end}
+                WHEN ${created_date} between ${period_2_start} and ${period_2_end}
                 THEN 2
                 END
             {% else %}
@@ -137,9 +137,9 @@ view: pop_parameters {
     sql:
             {% if current_date_range._is_filtered %}
                 CASE
-                WHEN {% condition current_date_range %} ${date_raw} {% endcondition %}
+                WHEN {% condition current_date_range %} ${created_raw} {% endcondition %}
                 THEN 'This {% parameter compare_to %}'
-                WHEN ${date_date} between ${period_2_start} and ${period_2_end}
+                WHEN ${created_date} between ${period_2_start} and ${period_2_end}
                 THEN 'Last {% parameter compare_to %}'
                 END
             {% else %}
@@ -155,8 +155,8 @@ view: pop_parameters {
     sql:
             {% if current_date_range._is_filtered %}
                 CASE
-                WHEN {% condition current_date_range %} ${date_raw} {% endcondition %} THEN 'this'
-                WHEN ${date_date} between ${period_2_start} and ${period_2_end} THEN 'last' END
+                WHEN {% condition current_date_range %} ${created_raw} {% endcondition %} THEN 'this'
+                WHEN ${created_date} between ${period_2_start} and ${period_2_end} THEN 'last' END
             {% else %} NULL {% endif %} ;;
   }
 
