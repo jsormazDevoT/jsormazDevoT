@@ -83,7 +83,7 @@ view: pop_parameters {
             CASE
             WHEN {% condition current_date_range %} ${created_raw} {% endcondition %}
             THEN DATEDIFF(DAY, DATE({% date_start current_date_range %}), ${created_date}) + 1
-            WHEN ${date_date} between ${period_2_start} and ${period_2_end}
+            WHEN ${created_date} between ${period_2_start} and ${period_2_end}
             THEN DATEDIFF(DAY, ${period_2_start}, ${created_date}) + 1
             END
         {% else %} NULL
