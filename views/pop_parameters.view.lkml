@@ -55,9 +55,9 @@ view: pop_parameters {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            DATEADD(DAY, -${days_in_period}, DATE({% date_start current_date_range %}))
+            DATE_ADD(DAY, -${days_in_period}, DATE({% date_start current_date_range %}))
             {% else %}
-            DATEADD({% parameter compare_to %}, -1, DATE({% date_start current_date_range %}))
+            DATE_ADD({% parameter compare_to %}, -1, DATE({% date_start current_date_range %}))
             {% endif %};;
   }
 
@@ -68,9 +68,9 @@ view: pop_parameters {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            DATEADD(DAY, -1, DATE({% date_start current_date_range %}))
+            DATE_ADD(DAY, -1, DATE({% date_start current_date_range %}))
             {% else %}
-            DATEADD({% parameter compare_to %}, -1, DATEADD(DAY, -1, DATE({% date_end current_date_range %})))
+            DATE_ADD({% parameter compare_to %}, -1, DATE_ADD(DAY, -1, DATE({% date_end current_date_range %})))
             {% endif %};;
   }
 
@@ -112,7 +112,7 @@ view: pop_parameters {
     description: "Use this as your grouping dimension when comparing periods. Aligns the previous periods onto the current period"
     label: "Current Period"
     type: time
-    sql: DATEADD(DAY, ${day_in_period} - 1, DATE({% date_start current_date_range %})) ;;
+    sql: DATE_ADD(DAY, ${day_in_period} - 1, DATE({% date_start current_date_range %})) ;;
     view_label: "_PoP"
     timeframes: [
       date,
