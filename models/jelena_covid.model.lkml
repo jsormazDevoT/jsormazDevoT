@@ -37,6 +37,7 @@ explore: covid_it {
 
 explore: pop_parameters {
   label: "PoP Method 3: Custom choice of current and previous periods with parameters"
- # always_filter: {
-  #  filters: [current_date_range: "6 months", compare_to: "Year" ]
+  always_filter: {
+   filters: [current_date_range: "6 months", compare_to: "Year" ]
+  }
   }
